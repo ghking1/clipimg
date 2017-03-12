@@ -1,0 +1,59 @@
+
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    background-color: #CCCCCC;
+}
+
+/*外层包装容器*/
+.dialog, .dialog_mask, .dialog_wrap{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.dialog_container_clip{
+    display: table;
+    margin:60px auto 0px auto;
+    padding:0px 0px 20px 0px;
+}
+
+/*横向居中容器*/
+.dialog_center_div{
+    display: table;
+    margin:auto;
+}
+
+/*截图窗口大小*/
+.dialog_clip{
+    width: 300px;
+    height: 300px;
+}
+
+/*效果展示窗口*/
+.dialog_clipped_img{
+    margin-top: 10px;
+}
+
+/*按钮区样式*/
+.dialog_buttons{
+    margin-top: 20px;
+}
+
+.dialog_button{
+    display: inline;
+    font-size: 14px;
+    color: #555555;
+    background-color: #FFD275;
+    padding: 5px 20px 5px 20px;
+    margin: 0px 10px 0px 10px;
+}
+
+.dialog_button:hover{
+    cursor: pointer;
+}
+
+.dialog_button:active{
+    background-color: #D3A031;
+}

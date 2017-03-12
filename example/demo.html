@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <title>clipimg</title>
+    <script type="text/javascript" src="../clipimg.js"></script>
+    <link type="text/css" href="./demo.css" rel="stylesheet" />
+</head>
+<body>
+<div class="dialog">
+    <div class="dialog_mask"></div>
+    <div class="dialog_wrap">
+        <div class="dialog_container_clip">
+            <div class="dialog_center_div">
+                <div class="dialog_clip"></div><!-- 这里放置图片 -->
+            </div>
+            <div class="dialog_center_div dialog_buttons">
+                <input id="dialog_picture" onchange="demo_loadFile(this.files)" type="file" style="position:absolute; z-index: -1; visibility: hidden;" accept="image/*" />
+                <label for="dialog_picture" class="dialog_button">图片</label><!-- 这个label对应上面的input，这是为了不显示input的文件名和按钮 -->
+                <div id="dialog_ok" onclick="demo_getDataURL()" class="dialog_button">截图</div>
+                <div onclick="demo_good()" class="dialog_button">真棒</div>
+            </div>
+            <div class="dialog_center_div dialog_buttons">
+                <div id="dialog_zoomIn" onclick="demo_zoomIn()" class="dialog_button">放大</div>
+                <div id="dialog_zoomOut" onclick="demo_zoomOut()" class="dialog_button">缩小</div>
+                <div id="dialog_rotate" onclick="demo_rotate()" class="dialog_button">旋转</div>
+            </div>
+            <div class="dialog_center_div">
+                <img class="dialog_clipped_img" src="" /><!-- 这里放置截图后图片 -->
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="./demo.js"></script>
+</body>
+</html>
