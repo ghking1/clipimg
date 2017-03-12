@@ -17,8 +17,8 @@
 
 
 ## 快速入门
-1. 引入脚本<script type="text/javascript" src="../clipimg.js"></script>
-2. 设置容器<div class="dialog_clip"></div>
+1. 引入脚本\<script type="text/javascript" src="../clipimg.js"\>\</script\>
+2. 设置容器\<div class="dialog_clip"\>\</div\>
 3. 创建对象var clipimg=Clipimg(document.querySelector('.dialog_clip'));
 
     其实最核心的就上面这几步，但是光这样肯定不行的，这里只是介绍下整体流程而已，有了这个概念，再去看demo的代码应该就方便多了。
@@ -76,7 +76,7 @@
 
     如果想得到image/jpeg数据但浏览器又不支持怎么办呢，我们可以自己将原始数据压缩成image/jpeg格式，这需要使用一个jpeg编码插件：https://github.com/owencm/javascript-jpeg-encoder
 
-    在html中引入脚本：<script type="text/javascript" src="../javascript-jpeg-encoder.js"></script>
+    在html中引入脚本：\<script type="text/javascript" src="../javascript-jpeg-encoder.js"\>\</script\>
     
 
 ```
