@@ -13,7 +13,7 @@
 2. 打开example/demo.html
 3. 操作按钮进行截图
 
-![image](https://github.com/ghking1/clipimg/example/demo.jpg)
+![image](https://github.com/ghking1/clipimg/raw/master/example/demo.jpg)
 
 
 ## 快速入门
