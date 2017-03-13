@@ -34,11 +34,6 @@
 
   imgSrc 是初始图片地址，默认为空字符串
 
-  clipSize 是截图要保存的尺寸，默认256像素
-
-  format 是最后生成的截图的格式，注意不是你加载的图片的格式，默认image/png
-
-  quality 是图片质量，对image/jpeg格式有效，默认0.5
   
 2. 接口函数
 
@@ -54,19 +49,33 @@
 
   缩小图片
   
-- loadFilt(file)
+- loadFile(file)
 
   加载图片文件，这个文件名一般来自文件对话框，参加示例程序
   
-- getDataURL()
+- getDataURL(clipeSize, format, quality)
+
+    clipSize是截图要保存的尺寸，默认256
+
+    format是截图的格式，默认image/png
+    
+    quality是图片质量，对image/jpeg格式有效，默认0.5
 
   获取截取的图片的URL,这个URL其实就是base64编码后的数据文件，可以通过ajax直接上传给服务器，也可以指定给img元素显示。
   
-- getBlob()
+- getBlob(clipeSize, format, quality))
 
-  获取截取的图片的二进制数据
+    clipSize是截图要保存的尺寸，默认256
+
+    format是截图的格式，默认image/png
+    
+    quality是图片质量，对image/jpeg格式有效，默认0.5
+    
+    获取截取的图片的二进制数据
   
-- getImageData()
+- getImageData(clipSize)
+
+    clipSize是截图要保存的尺寸，默认256,因为该函数获取的是未编码数据，使用不需要format和quality参数
 
   获取截取的图片的原始像素级数据,这个是未经过编码的数据，当然也是未经过压缩的，一般比较大。
 
@@ -85,7 +94,7 @@ function demo_getDataURL()
     var url=clipimg.getDataURL();
     if(url==null)
     {
-        var encoder=new JPEGEncoder(50);
+        var encoder=new JPEGEncoder(50); //JPEGEncoder的压缩质量取值范围1-100，注意区别于clipimg的0.0-1.0
         var imgData=clipimg.getImageData();
         url=encoder.encode(imgData, 50);
     }
@@ -96,5 +105,3 @@ function demo_getDataURL()
 ## 声明
 
     本插件是基于cropbox写的，但是由于改动幅度太大，而且原仓库好久都没有更新了，所以就没有提交到那里。
-
-    使用，转载，本插件请注明作者：ghking1

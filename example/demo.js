@@ -26,7 +26,7 @@ function demo_rotate()
 
 function demo_getDataURL()
 {
-    var url=clipimg.getDataURL();
+    var url=clipimg.getDataURL(128);
     document.querySelector('.dialog_clipped_img').src=url;
 }
 

@@ -3,17 +3,11 @@
  *   element指定图片放置对象
  *   options选项:
  *   imgSrc是初始图片地址，默认''
- *   clipSize是截图要保存的尺寸，默认256
- *   format是截图的格式，默认image/png
- *   quality是图片质量，对image/jpeg格式有效，默认0.5
  */
 function Clipimg(element, options){
 
     var options= options==undefined ? { } : options;
     var imgSrc= options.imgSrc==undefined ? '' : options.imgSrc;
-    var clipSize= options.clipSize==undefined ? 256 : options.clipSize;
-    var format= options.format==undefined ?  'image/png' : options.clipSize;
-    var quality= options.quality==undefined ? 0.5 : options.quality;
 
     var isloading=true;     //正在加载文件时不允许拖动
     var isdragging=false;   //防止触摸或拖动多次同时滚动
@@ -80,8 +74,10 @@ function Clipimg(element, options){
     }
 
     //获取截图对应的canvas和context
-    function getcancon()
+    function getcancon(clipSize)
     {
+        clipSize= clipSize || 256;
+
         var ratio_canvas_clipBox=clipSize/clipbox.clientWidth;
         var dim = imgbox.style.backgroundPosition.split(' ');
         var size= imgbox.style.backgroundSize.split(' ');
@@ -109,19 +105,27 @@ function Clipimg(element, options){
     }
 
     //获取截取的图片的原始像素级数据
-    function getImageData()
+    function getImageData(clipeSize)
     {
-        var canvas=getcancon()[0];
-        var context=getcancon()[1];
+        clipSize= clipSize || 256;
+
+        var cancon=getcancon(clipSize);
+        var canvas=cancon[0];
+        var context=cancon[1];
         var imgData = context.getImageData(0, 0, canvas.width, canvas.height);
         return imgData;
     }
 
     //获取截取的图片的URL
-    function getDataURL()
+    function getDataURL(clipSize, format, quality)
     {
-        var canvas=getcancon()[0];
-        var context=getcancon()[1];
+        clipSize= clipSize || 256;
+        format= format || 'image/png';
+        quality= quality || 0.5;
+
+        var cancon=getcancon(clipSize);
+        var canvas=cancon[0];
+        var context=cancon[1];
         var imgURL=canvas.toDataURL(format, quality);
         if(imgURL.search('data:'+format+';base64,')!=0)
         {
@@ -135,9 +139,13 @@ function Clipimg(element, options){
     }
 
     //获取截取的图片的二进制表示
-    function getBlob()
+    function getBlob(clipSize, format, quality)
     {
-        var imgURL= getDataURL();
+        clipSize= clipSize || 256;
+        format= format || 'image/png';
+        quality= quality || 0.5;
+
+        var imgURL= getDataURL(clipSize, format, quality);
         if(imgURL==null) return null;
         var b64=imgURL.replace('data:'+format+';base64,','');
         var binary = atob(b64);
