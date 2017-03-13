@@ -1,6 +1,11 @@
 # clipimg
 a lightweight picture clipper for PC and mobile
 
+## 使用情景
+
+1. 当然是可以用于任何需要裁剪图片的时候
+2. 需要上传图片的时候，可以先用该插件截图再上传
+
 ## 特色
 1. 功能丰富
 2. 接口简洁
