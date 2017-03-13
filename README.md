@@ -1,5 +1,5 @@
 # clipimg
-一个强大的，纯js实现的，优雅的图片裁剪插件，兼容PC和移动端
+a lightweight picture clipper for PC and mobile
 
 ## 特色
 1. 功能丰富
