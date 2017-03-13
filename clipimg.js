@@ -368,9 +368,10 @@ function Clipimg(element, options){
         loadFile: loadFile,
         getDataURL: getDataURL,
         getBlob: getBlob,
+        getImageData: getImageData,
         zoomIn: zoomIn,
         zoomOut: zoomOut,
         rotate: rotate
     };
     return obj;
-};
+}
