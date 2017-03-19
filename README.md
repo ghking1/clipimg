@@ -107,6 +107,44 @@ function demo_getDataURL()
 }
 ```
 
+2. 关于如何上传图片的问题，前端写法可以一样，但后端也许会有些差别，这里以nodejs作为后端语言举例：
+
+前端代码：
+```
+function sendimg()
+{
+    var data=clipimg.getDataURL(256, 'image/jpeg', 0.5);//截取base64编码编码的图片
+    var xhr = createXHR(); //创建ajax，这个函数网上可以找到，很常用
+    xhr.onreadystatechange = function () {
+	    //...
+    }
+    xhr.open('post', '/getimg', false);
+    xhr.send(data); //发送数据
+}
+
+
+```
+
+后端代码：
+```
+function getimg(req, res)
+{
+    var image='';
+    req.on('data',function(data){   //接收数据
+        image+=data;
+    });
+
+    req.on('end', function(){       //数据接收完毕，写入数据
+        var base64=image.replace('data:image/jpeg;base64,','');
+        var dataBuffer=new Buffer(base64, 'base64');
+	    require('fs').writeFile('./test.jpg', dataBuffer);
+    });
+    
+    //...
+}
+
+```
+
 ## 声明
 
     本插件是基于cropbox写的，但是由于改动幅度太大，而且原仓库好久都没有更新了，所以就没有提交到那里。
